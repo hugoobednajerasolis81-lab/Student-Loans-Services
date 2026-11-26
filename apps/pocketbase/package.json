@@ -1,0 +1,14 @@
+{
+  "name": "@student-loans/pocketbase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Student Loans Services PocketBase workspace",
+  "scripts": {
+    "dev": "node -e \"console.log('PocketBase workspace is configured; the PocketBase executable is not included in the repository.')\"",
+    "build": "node -e \"console.log('PocketBase workspace structure check passed.')\"",
+    "start": "node -e \"console.log('Install PocketBase separately and configure the local data directory before starting.')\"",
+    "lint": "node -e \"console.log('PocketBase hooks are runtime JavaScript; no lint configuration is available yet.')\"",
+    "typecheck": "node -e \"console.log('PocketBase hook typecheck requires PocketBase type declarations.')\""
+  }
+}
