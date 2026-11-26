@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Loans Services</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, system-ui, sans-serif; color: #263c4a; background: #f7f5f0; }
+    body { margin: 0; } main { max-width: 960px; margin: auto; padding: 48px 24px; }
+    .eyebrow { color: #704249; font-size: .75rem; font-weight: 700; letter-spacing: .14em; }
+    h1 { max-width: 680px; font-size: clamp(2.4rem, 7vw, 5rem); line-height: 1; font-weight: 500; margin: 18px 0; }
+    p { color: #667279; line-height: 1.7; max-width: 620px; }
+    .card { background: white; border: 1px solid #d8dad6; border-radius: 10px; padding: 24px; margin-top: 32px; max-width: 560px; }
+    label { display: block; font-weight: 650; margin: 14px 0 6px; } input { width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid #bac2c4; border-radius: 5px; font: inherit; }
+    button { margin-top: 20px; background: #334f60; color: white; border: 0; border-radius: 5px; padding: 13px 20px; font: inherit; cursor: pointer; }
+    #result { margin-top: 18px; font-weight: 700; color: #334f60; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">STUDENT LOANS SERVICES</div>
+    <h1>A clearer path through student loan decisions.</h1>
+    <p>Review an estimated monthly payment and start organizing your repayment plan. This calculator is educational and is not financial advice.</p>
+    <section class="card" aria-labelledby="calculator-title">
+      <h2 id="calculator-title">Payment estimate</h2>
+      <label for="balance">Loan balance</label>
+      <input id="balance" type="number" min="0" step="100" value="25000">
+      <label for="rate">Annual interest rate (%)</label>
+      <input id="rate" type="number" min="0" step="0.01" value="5.5">
+      <label for="years">Repayment term (years)</label>
+      <input id="years" type="number" min="1" max="50" step="1" value="10">
+      <button id="calculate" type="button">Calculate estimate</button>
+      <div id="result" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+  <script>
+    const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+    document.querySelector("#calculate").addEventListener("click", () => {
+      const balance = Number(document.querySelector("#balance").value);
+      const monthlyRate = Number(document.querySelector("#rate").value) / 100 / 12;
+      const months = Number(document.querySelector("#years").value) * 12;
+      const result = document.querySelector("#result");
+      if (!(balance > 0) || !(months > 0) || monthlyRate < 0) { result.textContent = "Enter valid loan values."; return; }
+      const payment = monthlyRate === 0 ? balance / months : balance * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
+      result.textContent = `Estimated monthly payment: ${money.format(payment)}`;
+    });
+  </script>
+</body>
+</html>
