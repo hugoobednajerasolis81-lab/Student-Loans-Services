@@ -1,0 +1,14 @@
+{
+  "name": "@student-loans/pocketbase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Student Loans Services PocketBase workspace",
+  "scripts": {
+    "dev": "node -e \"console.log('PocketBase hooks are ready; install PocketBase separately to run the backend.')\"",
+    "build": "node --check pb_hooks/password-reset-email.pb.js",
+    "start": "node -e \"console.log('Install PocketBase separately and point it at this workspace.')\"",
+    "lint": "node --check pb_hooks/password-reset-email.pb.js",
+    "typecheck": "node --check pb_hooks/password-reset-email.pb.js"
+  }
+}

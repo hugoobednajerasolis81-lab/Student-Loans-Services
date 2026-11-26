@@ -1,0 +1,28 @@
+name: Recovery branch checks
+
+on:
+  push:
+    branches:
+      - build/recovery-and-functional-crm
+  pull_request:
+    branches:
+      - build/recovery-and-functional-crm
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install workspaces
+        run: npm install --no-audit --no-fund
+      - name: Check canonical repository structure
+        run: npm run check:structure
+      - name: Type check the React Router application
+        run: npm run typecheck
+      - name: Build the application
+        run: npm run build
+      - name: Run production server smoke tests
+        run: node --test tests/*.test.mjs
