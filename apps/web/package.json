@@ -5,10 +5,10 @@
   "type": "module",
   "description": "Student Loans Services web application workspace",
   "scripts": {
-    "dev": "node -e \"console.log('Web workspace is configured; frontend entry files still need to be recovered from the Hostinger export.')\"",
-    "build": "node -e \"console.log('Web workspace structure check passed.')\"",
-    "start": "node -e \"console.log('Web workspace is configured; no production server has been recovered yet.')\"",
-    "lint": "node -e \"console.log('Web lint placeholder: no frontend source manifest is available yet.')\"",
-    "typecheck": "node -e \"console.log('Web typecheck placeholder: no TypeScript project configuration is available yet.')\""
+    "dev": "node server.mjs",
+    "build": "node -e \"console.log('Static web build is ready in public/.')\"",
+    "start": "node server.mjs",
+    "lint": "node --check server.mjs",
+    "typecheck": "node --check server.mjs"
   }
 }
