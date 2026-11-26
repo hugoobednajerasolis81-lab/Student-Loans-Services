@@ -7,11 +7,11 @@
   "scripts": {
     "setup": "bun install",
     "check:structure": "node scripts/check-structure.mjs",
-    "dev": "bun run check:structure",
-    "build": "bun run check:structure",
-    "start": "bun run check:structure",
-    "lint": "bun run check:structure",
-    "typecheck": "bun run check:structure"
+    "dev": "concurrently --kill-others --raw \"bun --cwd apps/web run dev\" \"bun --cwd apps/pocketbase run dev\"",
+    "build": "bun run check:structure && bun --cwd apps/web run build && bun --cwd apps/pocketbase run build",
+    "start": "bun --cwd apps/web run start",
+    "lint": "bun run check:structure && bun --cwd apps/web run lint && bun --cwd apps/pocketbase run lint",
+    "typecheck": "bun run check:structure && bun --cwd apps/web run typecheck && bun --cwd apps/pocketbase run typecheck"
   },
   "devDependencies": {
     "concurrently": "^10.0.6",
